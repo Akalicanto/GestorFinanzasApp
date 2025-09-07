@@ -1,6 +1,0 @@
-@GestorFinanzasApp.Server_HostAddress = http://localhost:5152
-
-GET {{GestorFinanzasApp.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

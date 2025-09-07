@@ -1,0 +1,6 @@
+@Zentro.Server_HostAddress = http://localhost:5152
+
+GET {{Zentro.Server_HostAddress}}/
+Accept: application/json
+
+###
