@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36414.22 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "gestorfinanzasapp.client", "gestorfinanzasapp.client\gestorfinanzasapp.client.esproj", "{B6AB40FC-3951-0624-B72B-FBE4EF070263}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GestorFinanzasApp.Server", "GestorFinanzasApp.Server\GestorFinanzasApp.Server.csproj", "{AD4190A0-3814-4ECD-A44D-20EBFDE4D9C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AB40FC-3951-0624-B72B-FBE4EF070263}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AD4190A0-3814-4ECD-A44D-20EBFDE4D9C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD4190A0-3814-4ECD-A44D-20EBFDE4D9C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD4190A0-3814-4ECD-A44D-20EBFDE4D9C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD4190A0-3814-4ECD-A44D-20EBFDE4D9C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {574805DD-C8B2-4392-A60B-3818B6467847}
+	EndGlobalSection
+EndGlobal
