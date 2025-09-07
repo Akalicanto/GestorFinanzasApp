@@ -4,7 +4,7 @@
         {
             "label": "Crear migración",
             "type": "shell",
-            "command": "dotnet ef migrations add ${input:NombreMigracion} --project GestorFinanzasApp.Server -o GestorFinanzasApp.Server/Migrations",
+            "command": "dotnet ef migrations add ${input:NombreMigracion} --project GestorFinanzasApp.Server -o Migrations",
             "group": "build",
             "problemMatcher": [],
             "presentation": {
