@@ -1,58 +1,77 @@
-import { useEffect, useState } from 'react';
-import './App.css';
+import React from "react";
+import { Box, Typography, Button, Stack } from "@mui/material";
 
-interface Forecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
-}
-
-function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
-
-    useEffect(() => {
-        populateWeatherData();
-    }, []);
-
-    const contents = forecasts === undefined
-        ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
-        : <table className="table table-striped" aria-labelledby="tableLabel">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Temp. (C)</th>
-                    <th>Temp. (F)</th>
-                    <th>Summary</th>
-                </tr>
-            </thead>
-            <tbody>
-                {forecasts.map(forecast =>
-                    <tr key={forecast.date}>
-                        <td>{forecast.date}</td>
-                        <td>{forecast.temperatureC}</td>
-                        <td>{forecast.temperatureF}</td>
-                        <td>{forecast.summary}</td>
-                    </tr>
-                )}
-            </tbody>
-        </table>;
-
+const App: React.FC = () => {
     return (
-        <div>
-            <h1 id="tableLabel">Weather forecast</h1>
-            <p>This component demonstrates fetching data from the server.</p>
-            {contents}
-        </div>
-    );
+        <Box
+            sx={{
+                minHeight: "100vh",
+                bgcolor: "background.default",
+                p: 4,
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                gap: 4,
+            }}
+        >
+            <Typography variant="h4" sx={{ mb: 2 }}>
+                Demo de Colores MUI
+            </Typography>
 
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        if (response.ok) {
-            const data = await response.json();
-            setForecasts(data);
-        }
-    }
-}
+            {/* Cajas de colores */}
+            <Stack direction="row" spacing={2}>
+                {/* Color primario */}
+                <Box
+                    sx={{
+                        width: 150,
+                        height: 100,
+                        bgcolor: "primary.main",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: 2,
+                    }}
+                >
+                    <Typography color="primary.contrastText">Primary</Typography>
+                </Box>
+
+                {/* Color secundario */}
+                <Box
+                    sx={{
+                        width: 150,
+                        height: 100,
+                        bgcolor: "secondary.main",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: 2,
+                    }}
+                >
+                    <Typography color="secondary.contrastText">Secondary</Typography>
+                </Box>
+            </Stack>
+
+            {/* Botones de prueba */}
+            <Stack direction="row" spacing={2}>
+                <Button color="primary" variant="contained">
+                    Botón Verde
+                </Button>
+                <Button color="secondary" variant="contained">
+                    Botón Clarito
+                </Button>
+            </Stack>
+
+            {/* Texto de prueba */}
+            <Box>
+                <Typography color="text.primary">
+                    Texto principal sobre fondo blanco
+                </Typography>
+                <Typography color="text.secondary">
+                    Texto secundario sobre fondo blanco
+                </Typography>
+            </Box>
+        </Box>
+    );
+};
 
 export default App;
