@@ -12,7 +12,7 @@ using Zentro.Server.Data;
 namespace Zentro.Server.Migrations
 {
     [DbContext(typeof(ZentroDbContext))]
-    [Migration("20250907193155_InitialDBCreation")]
+    [Migration("20250909202926_InitialDBCreation")]
     partial class InitialDBCreation
     {
         /// <inheritdoc />
@@ -109,19 +109,19 @@ namespace Zentro.Server.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("email")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("surname")
+                    b.Property<string>("Surname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
