@@ -5,20 +5,20 @@ export const getTheme = (mode: "light" | "dark") =>
     palette: {
       mode,
       primary: {
-        main: "#4CAF50",
+        main: "#2E7D32",
         contrastText: "#FFFFFF",
       },
       secondary: {
-        main: "#81C784",
-        contrastText: "#212121",
+        main: "#66BB6A",
+        contrastText: "#FFFFFF",
       },
       background: {
-        default: mode === "light" ? "#FFFFFF" : "#1E1E1E",
-        paper: mode === "light" ? "#FFFFFF" : "#2C2C2C", 
+        default: mode === "light" ? "#F5F5F5" : "#1B3120",
+        paper: mode === "light" ? "#FFFFFF" : "#25422A",
       },
       text: {
-        primary: mode === "light" ? "#212121" : "#E0E0E0",
-        secondary: mode === "light" ? "#757575" : "#B0B0B0",
-      },
+        primary: mode === "light" ? "#1B1B1B" : "#E0E0E0",
+        secondary: mode === "light" ? "#4F4F4F" : "#B5C5B5",
+      }
     },
   });
