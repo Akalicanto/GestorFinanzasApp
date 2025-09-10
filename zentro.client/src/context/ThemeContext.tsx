@@ -1,4 +1,4 @@
-import { createContext, useState, useMemo } from "react";
+import { createContext, useState, useMemo, useEffect } from "react";
 import type { ReactNode } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -12,12 +12,21 @@ export const CustomThemeContext = createContext<ThemeContextType | null>(null);
 
 export const CustomThemeProvider = ({ children }: { children: ReactNode }) => {
     const prefersDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const storedMode = localStorage.getItem("themeMode") as "light" | "dark" | null;
 
-    const [mode, setMode] = useState<"light" | "dark">(prefersDarkMode ? "dark" : "light");
+    const [mode, setMode] = useState<"light" | "dark">(
+        storedMode || (prefersDarkMode ? "dark" : "light")
+    );
 
     const toggleTheme = () => {
-        setMode(prev => (prev === "light" ? "dark" : "light"));
+        const newMode = mode === "light" ? "dark" : "light";
+        setMode(newMode);
+        localStorage.setItem("themeMode", newMode);
     };
+
+    useEffect(() => {
+        localStorage.setItem("themeMode", mode);
+    }, [mode]);
 
     const theme = useMemo(() => getTheme(mode), [mode]);
 
