@@ -2,26 +2,28 @@ import React, { useState } from "react";
 import { Box, TextField, Button, Typography, Paper, Link } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { useSnackbar } from "../../context/SnackbarContext";
 import type { UserLoginRequest } from "../../types/userTypes";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState<string | null>(null);
 
     const { login } = useAuth();
+    const { showMessage } = useSnackbar();
     const navigate = useNavigate();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setError(null);
 
         try {
             const data: UserLoginRequest = { email, password };
             await login(data);
+
+            showMessage("Has iniciado sesión correctamente", "success");
             navigate("/");
         } catch (err: any) {
-            setError(err?.message || "Error al iniciar sesión");
+            showMessage(err?.response?.data || "Error al iniciar sesión", "error");
         }
     };
 
