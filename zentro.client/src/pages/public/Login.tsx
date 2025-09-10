@@ -4,8 +4,11 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useSnackbar } from "../../context/SnackbarContext";
 import type { UserLoginRequest } from "../../types/userTypes";
+import { useTranslation } from "react-i18next";
 
 const Login = () => {
+    const { t } = useTranslation();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -47,7 +50,7 @@ const Login = () => {
 
                 <form onSubmit={handleSubmit}>
                     <TextField
-                        label="Correo electrónico"
+                        label={t("fields.email")}
                         variant="outlined"
                         fullWidth
                         sx={{ mb: 2 }}
@@ -55,7 +58,7 @@ const Login = () => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                     <TextField
-                        label="Contraseña"
+                        label={t("fields.password")}
                         type="password"
                         variant="outlined"
                         fullWidth

@@ -1,0 +1,11 @@
+ {
+    "fields": {
+        "email": "E-Mail",
+        "password": "Passwort"
+    },
+    "languages": {
+        "spanish": "Spanisch",
+        "english": "Englisch",
+        "german": "Deutsch"
+    }
+ }
