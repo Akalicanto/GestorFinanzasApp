@@ -23,10 +23,10 @@ const Login = () => {
             const data: UserLoginRequest = { email, password };
             await login(data);
 
-            showMessage("Has iniciado sesión correctamente", "success");
+            showMessage(t("messages.logged"), "success");
             navigate("/");
         } catch (err: any) {
-            showMessage(err?.response?.data || "Error al iniciar sesión", "error");
+            showMessage(err?.response?.data || t("messages.logged_error"), "error");
         }
     };
 
@@ -45,7 +45,7 @@ const Login = () => {
                     Zentro
                 </Typography>
                 <Typography variant="h6" align="center" gutterBottom>
-                    Inicia sesión
+                    {t("fields.login")}
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
@@ -67,14 +67,14 @@ const Login = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mb: 2 }}>
-                        Entrar
+                        {t("fields.enter")}
                     </Button>
                 </form>
 
                 <Typography align="center">
-                    ¿No tienes cuenta?{" "}
+                    {t("messages.ask_account")}{" "}
                     <Link component={RouterLink} to="/register">
-                        Regístrate
+                        {t("fields.register")}
                     </Link>
                 </Typography>
             </Paper>

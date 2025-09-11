@@ -1,11 +1,33 @@
- {
+{
     "fields": {
         "email": "Email",
-        "password": "Password"
+        "password": "Password",
+        "login": "Log in",
+        "register": "Register",
+        "enter": "Enter",
+        "create_account": "Create your account",
+        "name": "Name",
+        "surname": "Surname",
+        "birthDate": "Birthdate",
+        "confirm_password": "Confirm password",
+        "register_in": "Register"
     },
     "languages": {
         "spanish": "Spanish",
         "english": "English",
         "german": "German"
+    },
+    "messages": {
+        "logged": "You have successfully logged in",
+        "logged_error": "Error logging in",
+        "ask_account": "Don't have an account?",
+        "required_name": "Name is required",
+        "required_surname": "Surname is required",
+        "invalid_email": "Invalid email",
+        "min_password": "Minimum 6 characters",
+        "password_mismatch": "Passwords do not match",
+        "required_birthDate": "Birthdate is required",
+        "register_error": "Error registering user",
+        "already_account": "Already have an account?"
     }
- }
+}

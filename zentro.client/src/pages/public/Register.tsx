@@ -3,8 +3,11 @@ import { Box, TextField, Button, Typography, Paper, Link } from "@mui/material";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { createOrUpdate } from "../../services/userService";
 import type { User } from "../../types/userTypes";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
+    const { t } = useTranslation();
+
     const [formData, setFormData] = useState<Omit<User, "id">>({
         name: "",
         surname: "",
@@ -24,12 +27,12 @@ const Register = () => {
     const validate = () => {
         const newErrors: { [key: string]: string } = {};
 
-        if (!formData.name) newErrors.name = "El nombre es obligatorio";
-        if (!formData.surname) newErrors.surname = "El apellido es obligatorio";
-        if (!formData.email.includes("@")) newErrors.email = "Correo inválido";
-        if (formData.password.length < 6) newErrors.password = "Mínimo 6 caracteres";
-        if (formData.password !== confirmPassword) newErrors.confirmPassword = "Las contraseñas no coinciden";
-        if (!formData.birthDate) newErrors.birthDate = "La fecha de nacimiento es obligatoria";
+        if (!formData.name) newErrors.name = t("messages.required_name");
+        if (!formData.surname) newErrors.surname = t("messages.required_surname");
+        if (!formData.email.includes("@")) newErrors.email = t("messages.invalid_email");
+        if (formData.password.length < 6) newErrors.password = t("messages.min_password");
+        if (formData.password !== confirmPassword) newErrors.confirmPassword = t("messages.password_mismatch");
+        if (!formData.birthDate) newErrors.birthDate = t("messages.required_birthDate");
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -44,7 +47,7 @@ const Register = () => {
 
             navigate("/login");
         } catch (error) {
-            console.error("Error al registrar usuario:", error);
+            console.error(t("messages.register_error"), error);
         }
     };
 
@@ -63,12 +66,12 @@ const Register = () => {
                     Zentro
                 </Typography>
                 <Typography variant="h6" align="center" gutterBottom>
-                    Crea tu cuenta
+                    {t("fields.create_account")}
                 </Typography>
 
                 <form onSubmit={handleSubmit}>
                     <TextField
-                        label="Nombre"
+                        label={t("fields.name")}
                         variant="outlined"
                         fullWidth
                         sx={{ mb: 2 }}
@@ -78,7 +81,7 @@ const Register = () => {
                         helperText={errors.name}
                     />
                     <TextField
-                        label="Apellido"
+                        label={t("fields.surname")}
                         variant="outlined"
                         fullWidth
                         sx={{ mb: 2 }}
@@ -88,7 +91,7 @@ const Register = () => {
                         helperText={errors.surname}
                     />
                     <TextField
-                        label="Correo electrónico"
+                        label={t("fields.email")}
                         variant="outlined"
                         fullWidth
                         sx={{ mb: 2 }}
@@ -98,7 +101,7 @@ const Register = () => {
                         helperText={errors.email}
                     />
                     <TextField
-                        label="Fecha de nacimiento"
+                        label={t("fields.birthDate")}
                         type="date"
                         variant="outlined"
                         fullWidth
@@ -110,7 +113,7 @@ const Register = () => {
                         helperText={errors.birthDate}
                     />
                     <TextField
-                        label="Contraseña"
+                        label={t("fields.password")}
                         type="password"
                         variant="outlined"
                         fullWidth
@@ -121,7 +124,7 @@ const Register = () => {
                         helperText={errors.password}
                     />
                     <TextField
-                        label="Confirmar contraseña"
+                        label={t("fields.confirm_password")}
                         type="password"
                         variant="outlined"
                         fullWidth
@@ -132,14 +135,14 @@ const Register = () => {
                         helperText={errors.confirmPassword}
                     />
                     <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mb: 2 }}>
-                        Registrarse
+                        {t("fields.register_in")}
                     </Button>
                 </form>
 
                 <Typography align="center">
-                    ¿Ya tienes cuenta?{" "}
+                    {t("messages.already_account")}{" "}
                     <Link component={RouterLink} to="/login">
-                        Inicia sesión
+                        {t("fields.login")}
                     </Link>
                 </Typography>
             </Paper>

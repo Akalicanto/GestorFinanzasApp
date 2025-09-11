@@ -1,11 +1,33 @@
- {
+{
     "fields": {
         "email": "E-Mail",
-        "password": "Passwort"
+        "password": "Passwort",
+        "login": "Anmelden",
+        "register": "Registrieren",
+        "enter": "Eintreten",
+        "create_account": "Erstelle dein Konto",
+        "name": "Name",
+        "surname": "Nachname",
+        "birthDate": "Geburtsdatum",
+        "confirm_password": "Passwort bestätigen",
+        "register_in": "Registrieren"
     },
     "languages": {
         "spanish": "Spanisch",
         "english": "Englisch",
         "german": "Deutsch"
+    },
+    "messages": {
+        "logged": "Du hast dich erfolgreich angemeldet",
+        "logged_error": "Fehler bei der Anmeldung",
+        "ask_account": "Hast du kein Konto?",
+        "required_name": "Der Name ist erforderlich",
+        "required_surname": "Der Nachname ist erforderlich",
+        "invalid_email": "Ungültige E-Mail",
+        "min_password": "Mindestens 6 Zeichen",
+        "password_mismatch": "Die Passwörter stimmen nicht überein",
+        "required_birthDate": "Das Geburtsdatum ist erforderlich",
+        "register_error": "Fehler bei der Benutzerregistrierung",
+        "already_account": "Hast du schon ein Konto?"
     }
- }
+}
