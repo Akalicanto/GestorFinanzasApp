@@ -12,7 +12,7 @@ using Zentro.Server.Data;
 namespace Zentro.Server.Migrations
 {
     [DbContext(typeof(ZentroDbContext))]
-    [Migration("20250909202926_InitialDBCreation")]
+    [Migration("20250911210745_InitialDBCreation")]
     partial class InitialDBCreation
     {
         /// <inheritdoc />
@@ -55,8 +55,6 @@ namespace Zentro.Server.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("BankAccounts");
                 });
@@ -130,15 +128,6 @@ namespace Zentro.Server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Zentro.Server.Models.BankAccount", b =>
-                {
-                    b.HasOne("Zentro.Server.Models.User", null)
-                        .WithMany("BankAccounts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Zentro.Server.Models.Transaction", b =>
                 {
                     b.HasOne("Zentro.Server.Models.BankAccount", null)
@@ -151,11 +140,6 @@ namespace Zentro.Server.Migrations
             modelBuilder.Entity("Zentro.Server.Models.BankAccount", b =>
                 {
                     b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Zentro.Server.Models.User", b =>
-                {
-                    b.Navigation("BankAccounts");
                 });
 #pragma warning restore 612, 618
         }

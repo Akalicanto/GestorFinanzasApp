@@ -80,5 +80,20 @@ namespace Zentro.Server.Services
         }
 
         #endregion
+
+        #region CreateOrUpdate
+
+        public async Task<bool> CreateOrUpdate(User user)
+        {
+            user.Password = HashPassword(user.Password);
+
+            await _db.Users.AddAsync(user);
+
+            var result = await _db.SaveChangesAsync();
+
+            return result > 0;
+        }
+
+        #endregion
     }
 }

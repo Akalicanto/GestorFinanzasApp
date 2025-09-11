@@ -8,9 +8,10 @@ export interface UserTokenResponse {
 }
 
 export interface User {
-    id: number;
+    id?: number;
     name: string;
     surname: string;
     email: string;
+    password: string;
     birthDate: string;
 }

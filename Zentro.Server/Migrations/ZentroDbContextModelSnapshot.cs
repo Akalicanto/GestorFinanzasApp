@@ -53,8 +53,6 @@ namespace Zentro.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
-
                     b.ToTable("BankAccounts");
                 });
 
@@ -127,15 +125,6 @@ namespace Zentro.Server.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Zentro.Server.Models.BankAccount", b =>
-                {
-                    b.HasOne("Zentro.Server.Models.User", null)
-                        .WithMany("BankAccounts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Zentro.Server.Models.Transaction", b =>
                 {
                     b.HasOne("Zentro.Server.Models.BankAccount", null)
@@ -148,11 +137,6 @@ namespace Zentro.Server.Migrations
             modelBuilder.Entity("Zentro.Server.Models.BankAccount", b =>
                 {
                     b.Navigation("Transactions");
-                });
-
-            modelBuilder.Entity("Zentro.Server.Models.User", b =>
-                {
-                    b.Navigation("BankAccounts");
                 });
 #pragma warning restore 612, 618
         }

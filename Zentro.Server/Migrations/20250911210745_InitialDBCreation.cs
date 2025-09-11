@@ -12,23 +12,6 @@ namespace Zentro.Server.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Users",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Users", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "BankAccounts",
                 columns: table => new
                 {
@@ -44,12 +27,23 @@ namespace Zentro.Server.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BankAccounts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_BankAccounts_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Users",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Users", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,11 +71,6 @@ namespace Zentro.Server.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BankAccounts_UserId",
-                table: "BankAccounts",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Transactions_BankAccountId",
                 table: "Transactions",
                 column: "BankAccountId");
@@ -94,10 +83,10 @@ namespace Zentro.Server.Migrations
                 name: "Transactions");
 
             migrationBuilder.DropTable(
-                name: "BankAccounts");
+                name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "BankAccounts");
         }
     }
 }

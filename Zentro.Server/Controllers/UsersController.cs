@@ -30,7 +30,7 @@ namespace Zentro.Server.Controllers
             try
             {
                 if (string.IsNullOrEmpty(request.Email) || string.IsNullOrEmpty(request.Password))
-                    return BadRequest("Email y contrase�a son requeridos.");
+                    return BadRequest("Email y contraseña son requeridos.");
 
                 var token = await _userService.Login(request.Email, request.Password);
 
@@ -47,6 +47,32 @@ namespace Zentro.Server.Controllers
 
         #endregion
 
-        
+        #region CreateorUpdate
+
+        /// <summary>
+        /// Crea y actualiza un usuario
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ActionResult<bool>> CreateOrUpdate([FromBody] User user)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(user.Email) || string.IsNullOrEmpty(user.Password))
+                    return BadRequest("Email y contraseña son requeridos.");
+
+                bool result = await _userService.CreateOrUpdate(user);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        #endregion
+
     }
 }
